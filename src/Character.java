@@ -100,6 +100,16 @@ public class Character {
 
 
     //iteration 2 kontrol structures
+    public void charType(){
+        if (this.type == 'W'){
+            System.out.println("Warrior - brave, strong and resilient!");
+        } else if (this.type == 'M') {
+            System.out.println("Mage - slick and smart with magical powers!");
+        } else if (this.type == 'R'){
+            System.out.println("Rogue - Risk taking assassin with fast combat!");
+        }
+    }
+
     public void health(){
         if (healthPoints < 25){
             System.out.println("WARNING: Health critical!!!");
@@ -131,10 +141,6 @@ public class Character {
 
     }
 
-    //Udskriv forskellige beskeder baseret på klasse (‘W’, ‘M’, ‘R’)
-    public void charType(){
-
-    }
 
 
 

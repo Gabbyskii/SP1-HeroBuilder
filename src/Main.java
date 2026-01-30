@@ -8,6 +8,7 @@ public class Main {
                 156.50, true);
 
         System.out.println("===CHARACTER STATUS===");
+        char1.charType();
         System.out.println(char1);
 
         //inventory array
