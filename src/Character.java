@@ -9,18 +9,18 @@ public class Character {
     private double gold;
     private boolean isAlive;
     private char type;
-    //private String[] inventory; // inventory limit?
+    //private String[] inventory;
 
 
-    public Character(String name, int healthPoints, int maxHealth, int level, int experiencePoints, double gold, boolean isAlive, char type){
+    public Character(String name, char type, int healthPoints, int maxHealth, int level, int experiencePoints, double gold, boolean isAlive){
         this.name = name;
+        this.type = type;
         this.healthPoints = healthPoints;
         this.maxHealth = maxHealth;
         this.level = level;
         this.experiencePoints = experiencePoints;
         this.gold = gold;
         this.isAlive = isAlive;
-        this.type = type;
         //this.inventory = inventory;
 
     }
@@ -90,7 +90,7 @@ public class Character {
         this.type = type;
     }
 
-    /*public String[] getInventory() {
+   /* public String[] getInventory() {
         return inventory;
     }
 
@@ -110,7 +110,13 @@ public class Character {
     }
 
     // damage metode med if-statement igen + træk damage fra health:
-    public void damage(){
+    public void damage(int damage){
+        if (healthPoints >= 0){
+            healthPoints -= damage;
+            System.out.println(getName() + " took "+ damage+ " amount of damage...");
+            System.out.println("Health went from: "+ (healthPoints) +" to "+ healthPoints);
+        }
+
 
     }
 
@@ -121,10 +127,11 @@ public class Character {
 
 
     public String toString(){
-        return "Character name: "+name +"\nHP: "+ healthPoints +"\nMax HP: "+ maxHealth
+        return "Character name: "+name +"\nType (Warrior or Rogue): "+ type
+                +"\nHP: "+ healthPoints +"\nMax HP: "+ maxHealth
                 +"\nLevel: "+ level + "\nXP: "+ experiencePoints + "\nGold: "+gold
-                + "\nCharacter alive: "+ isAlive + "\nType (Warrior, Mage, Rogue): "+ type;
-                //+"\nInventory: "+ Arrays.toString(inventory); // inventory ikk visible uden toString metoden
+                + "\nCharacter is alive: "+ isAlive;
+                //+"\nInventory: "+ inventory; // inventory ikk visible uden toString metoden
     }
 
 
