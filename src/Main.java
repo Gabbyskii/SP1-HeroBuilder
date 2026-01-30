@@ -17,13 +17,16 @@ public class Main {
             System.out.println(inventory[i]);
         }
 
-        System.out.println();
-        //TODO: bliv færdig med iteration 2:
 
-        System.out.println("===COMBAT===");
+        //TODO: bliv færdig med iteration 2:
+        System.out.println("\n===STATUS===");
+        char1.levelUp();
+
+        System.out.println("\n===COMBAT===");
         System.out.println("Health status: ");
         char1.damage(30);
         char1.health();
+
 
 
 

@@ -109,14 +109,30 @@ public class Character {
 
     }
 
-    // damage metode med if-statement igen + træk damage fra health:
+
     public void damage(int damage){
+       int currentHealth = healthPoints;
         if (healthPoints >= 0){
             healthPoints -= damage;
-            System.out.println(getName() + " took "+ damage+ " amount of damage...");
-            System.out.println("Health went from: "+ (healthPoints) +" to "+ healthPoints);
+            System.out.println(getName() + " took "+ damage+ " damage!!");
+            System.out.println("Health went from: "+ currentHealth +" to "+ healthPoints);
         }
 
+    }
+
+    public void levelUp(){
+        int currentLevel = level;
+        int threshold = 1000 * currentLevel;
+        if (experiencePoints > threshold){
+            System.out.println("Ready to level up!");
+        } else {
+            System.out.println("Still at level: "+ currentLevel);
+        }
+
+    }
+
+    //Udskriv forskellige beskeder baseret på klasse (‘W’, ‘M’, ‘R’)
+    public void charType(){
 
     }
 
@@ -127,10 +143,10 @@ public class Character {
 
 
     public String toString(){
-        return "Character name: "+name +"\nType (Warrior or Rogue): "+ type
+        return "Character name: "+name +"\nType (Warrior, Mage, Rogue): "+ type
                 +"\nHP: "+ healthPoints +"\nMax HP: "+ maxHealth
                 +"\nLevel: "+ level + "\nXP: "+ experiencePoints + "\nGold: "+gold
-                + "\nCharacter is alive: "+ isAlive;
+                + "\n" +getName() + " is alive: "+ isAlive;
                 //+"\nInventory: "+ inventory; // inventory ikk visible uden toString metoden
     }
 
