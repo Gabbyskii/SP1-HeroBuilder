@@ -1,14 +1,29 @@
-public class Character {
-    String name;
-    int healthPoints;
-    int maxHealth;
-    int level;
-    int experiencePoints;
-    double gold;
-    boolean isAlive;
-    char type;
-    String[] inventory; // = new String[8] inventory limit mby?
+import java.util.Arrays;
 
+public class Character {
+    private String name;
+    private int healthPoints;
+    private int maxHealth;
+    private int level;
+    private int experiencePoints;
+    private double gold;
+    private boolean isAlive;
+    private char type;
+    //private String[] inventory; // inventory limit?
+
+
+    public Character(String name, int healthPoints, int maxHealth, int level, int experiencePoints, double gold, boolean isAlive, char type){
+        this.name = name;
+        this.healthPoints = healthPoints;
+        this.maxHealth = maxHealth;
+        this.level = level;
+        this.experiencePoints = experiencePoints;
+        this.gold = gold;
+        this.isAlive = isAlive;
+        this.type = type;
+        //this.inventory = inventory;
+
+    }
 
     public String getName() {
         return name;
@@ -75,35 +90,41 @@ public class Character {
         this.type = type;
     }
 
-    public String[] getInventory() {
+    /*public String[] getInventory() {
         return inventory;
     }
 
     public void setInventory(String[] inventory) {
         this.inventory = inventory;
+    }*/
+
+
+    //iteration 2 kontrol structures
+    public void health(){
+        if (healthPoints < 25){
+            System.out.println("WARNING: Health critical!!!");
+        } else {
+            System.out.println(getName() + " is still alive and well!\n");
+        }
+
+    }
+
+    // damage metode med if-statement igen + træk damage fra health:
+    public void damage(){
+
     }
 
 
 
-    public Character(String name, int healthPoints, int maxHealth, int level, int experiencePoints, double gold, boolean isAlive, char type, String[] inventory){
-        this.name = name;
-        this.healthPoints = healthPoints;
-        this.maxHealth = maxHealth;
-        this.level = level;
-        this.experiencePoints = experiencePoints;
-        this.gold = gold;
-        this.isAlive = isAlive;
-        this.type = type;
-        this.inventory = inventory;
 
 
-    }
+
 
     public String toString(){
         return "Character name: "+name +"\nHP: "+ healthPoints +"\nMax HP: "+ maxHealth
                 +"\nLevel: "+ level + "\nXP: "+ experiencePoints + "\nGold: "+gold
-                + "\nCharacter alive: "+ isAlive + "\nType (Warrior, Mage, Rogue): "+ type
-                +"\nInventory: "+ inventory;
+                + "\nCharacter alive: "+ isAlive + "\nType (Warrior, Mage, Rogue): "+ type;
+                //+"\nInventory: "+ Arrays.toString(inventory); // inventory ikk visible uden toString metoden
     }
 
 
