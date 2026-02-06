@@ -6,12 +6,12 @@ public class Character {
     private int level;
     private int experiencePoints;
     private double gold;
-    //private boolean isAlive;
     private char type;
-    //private String[] inventory;
+    private String[] inventory;
+    //private Weapon weapon;
 
 
-    public Character(String name, char type, int healthPoints, int maxHealth, int level, int experiencePoints, double gold) {
+    public Character(String name, char type, int healthPoints, int maxHealth, int level, int experiencePoints, double gold, String[] inventory) {
         this.name = name;
         this.type = type;
         this.healthPoints = healthPoints;
@@ -19,8 +19,9 @@ public class Character {
         this.level = level;
         this.experiencePoints = experiencePoints;
         this.gold = gold;
+        //this.weapon = weapon;
         //this.isAlive = isAlive;
-        //this.inventory = inventory;
+        this.inventory = inventory;
 
     }
 
@@ -40,7 +41,7 @@ public class Character {
         this.healthPoints = healthPoints;
     }
 
-    public int getMaxHealth() {
+   public int getMaxHealth() {
         return maxHealth;
     }
 
@@ -73,13 +74,6 @@ public class Character {
         this.gold = gold;
     }
 
-    /*public boolean isAlive() {
-        return isAlive;
-    }
-
-    public void setAlive(boolean alive) {
-        isAlive = alive;
-    }*/
 
     public char getType() {
         return type;
@@ -89,36 +83,30 @@ public class Character {
         this.type = type;
     }
 
-   /* public String[] getInventory() {
+    public String[] getInventory() {
         return inventory;
     }
 
     public void setInventory(String[] inventory) {
         this.inventory = inventory;
-    }*/
-
-
-    //iteration 2 kontrol structures
-    public void charType() {
-        if (this.type == 'W') {
-            System.out.println("Warrior - brave, strong and resilient!");
-        } else if (this.type == 'M') {
-            System.out.println("Mage - slick and smart with magical powers!");
-        } else if (this.type == 'R') {
-            System.out.println("Rogue - Risk taking assassin with fast combat!");
-        }
     }
 
-    // Returnerer true hvis health > 0
 
-    // Returnerer true hvis health < 25%
-    public boolean health() {
+
+
+    public boolean isHealthCritical() {
         if (healthPoints < 25) {
             System.out.println("WARNING: Health critical!!!");
-        } else {
-            System.out.println(getName() + " is still alive and well!\n");
+            return true;
         }
+        return false;
+    }
 
+    public boolean isAlive() {
+        if (healthPoints > 0) {
+        System.out.println(getName() + " is still alive and well!");
+        return true;
+        }
         return false;
     }
 
@@ -127,59 +115,80 @@ public class Character {
         int currentHealth = healthPoints;
         if (healthPoints >= 0) {
             healthPoints -= damage;
-            System.out.println(getName() + " took " + damage + " damage!!");
-            System.out.println("Health went from: " + currentHealth + " to " + healthPoints);
+            System.out.println(getName() + " took " + damage + " damage!!" + " | " +
+                    "Health: " + currentHealth + " --> " + healthPoints+ "\n");
         }
 
     }
 
     //TODO: Øge level, nulstille XP, øge maxHealth
-    public void levelUp() {
-        int currentLevel = level;
-        int threshold = 1000 * currentLevel;
-        if (experiencePoints > threshold) {
-            System.out.println("Ready to level up!");
-        } else {
-            System.out.println("Still at level: " + currentLevel);
+    public void levelUp() { //fix!!!!
+        int threshold = 100 * level;
+        if (experiencePoints >= threshold) {
+            int previousLevel = level;
+            level++;
+            experiencePoints = 0;
+            maxHealth += 10;
+            healthPoints = maxHealth;
+            System.out.println(name + " levelled up! "
+                    + previousLevel + " --> " + level +
+                    " | New max HP: " + maxHealth);
         }
-
     }
 
 
-    // Lav iteration 3 - metoder:
-    public void printCharacterSheet() {
-        System.out.println("Character name: "+name +"\nType (Warrior, Mage, Rogue): "+ type
-                +"\nHP: "+ healthPoints +"\nMax HP: "+ maxHealth
-                +"\nLevel: "+ level + "\nXP: "+ experiencePoints + "\nGold: "+gold);
 
-        if (this.type == 'W') {
-            System.out.println("Warrior - brave, strong and resilient!");
+    // Lav iteration 3 - metoder:
+    public void printCharacterSheet() { //switch case istedet
+        /*if (this.type == 'W') {
+            System.out.println("\nWarrior - Brave, strong and resilient!");
         } else if (this.type == 'M') {
-            System.out.println("Mage - slick and smart with magical powers!");
+            System.out.println("\nMage - Slick and smart with magical powers!");
         } else if (this.type == 'R') {
-            System.out.println("Rogue - Risk taking assassin with fast combat!");
+            System.out.println("\nRogue - Risk taking assassin with fast combat!");
+        }*/
+        String typeName = "";
+        switch (type){
+            case 'W':
+               typeName = "Warrior";
+                System.out.println("\nWarrior - Brave, strong and resilient!");
+               break;
+            case 'R':
+                typeName = "Rogue";
+                System.out.println("\nRogue - Risk taking assassin with fast combat!");
+                break;
+            case 'M':
+                typeName = "Mage";
+                System.out.println("\nMage - Slick and smart with magical powers!");
+                break;
         }
+
+        System.out.println("Character: "+name + " | "+ typeName +
+                "\n| HP: " + healthPoints+"/100"
+                + " | " + "XP: " + experiencePoints
+                + " | Level: " + level  + "\n| Gold: " + gold);
     }
 
     public void heal(int amount) {
         int heals = healthPoints;
         if (healthPoints >= 0) {
             healthPoints += amount;
-            System.out.println(getName() + " healed with " + amount + " HP!!");
-            System.out.println("Health went from: " + heals + " to " + healthPoints);
+            System.out.println(getName() + " healed with " + amount + " HP!!"+
+                    " | Health: " + heals + " --> " + healthPoints);
         }
     }
 
     public void addGold(double amount){
-        double goldCoins = gold;
+        double goldCoins = amount;
         gold += amount;
-        System.out.println(goldCoins +" gold added!"+ "\nNew amount is: "+gold);
+        System.out.println(getName() +": +"+goldCoins +" gold added!"+ " | New amount is: "+gold);
     }
 
     public boolean removeGold(double amount){
         gold -= amount;
         if (gold >= 0){
-            System.out.println(amount+ " gold removed.."+ "\nNew gold amount: "+ gold);
+            System.out.println("Gold removed from "+getName() +
+                    ": -"+amount+ " | New gold amount: "+ gold);
             return true;
         }
         System.out.println("Cannot remove gold!!");
@@ -189,29 +198,31 @@ public class Character {
     public void addXP(int amount){
         experiencePoints += amount;
         int newXP = experiencePoints;
-        System.out.println("\nXP added: "+ amount+ "\nNew XP level: "+ newXP);
+        System.out.println(getName() +": XP gained: +"+ amount+ " | Total: "+ newXP);
 
     }
 
     public double getHealthPercentage(){
-       return (double) maxHealth / healthPoints * 100;
+        return (double) healthPoints / maxHealth * 100;
 
     }
 
     public void printInventory() {
-        String[] inventory = new String[]{"Ax", "Knife", "Slurp splash", "Sprunk"};
         System.out.println("\nInventory (" + inventory.length + " items)");
-        for (int i = 0; i < inventory.length; i++) {
-            System.out.println(inventory[i]);
+        System.out.println(getName()+"'s: ");
+        for (String inv: inventory) {
+            System.out.println(inv);
         }
+
     }
+
+
 
 
     public String toString(){
-        return name + type + healthPoints + maxHealth + level + experiencePoints +gold;
-                //+ "\n" +getName() + " is alive: "+ isAlive;
-                //+"\nInventory: "+ inventory; // inventory ikk visible uden toString metoden
+        return name + type + healthPoints + maxHealth + level + experiencePoints +gold
+                +"\nInventory: "+ inventory; // inventory ikk visible uden toString metoden
     }
 
-
 }
+
