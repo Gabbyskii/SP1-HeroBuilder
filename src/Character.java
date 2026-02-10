@@ -111,15 +111,14 @@ public class Character {
     }
 
 
-    public void damage(int damage) {
-        int currentHealth = healthPoints;
-        if (healthPoints >= 0) {
-            healthPoints -= damage;
-            System.out.println(getName() + " took " + damage + " damage!!" + " | " +
-                    "Health: " + currentHealth + " --> " + healthPoints+ "\n");
-        }
+    //iteration 4: attack method erstattet af min damage metode
+    public void attack(Character target) {
+        int damage = 5 * level + 10;
+        System.out.println(name + " attacks " + target.getName() + " for " + damage + " damage!");
 
     }
+
+
 
     //TODO: Øge level, nulstille XP, øge maxHealth
     public void levelUp() { //fix!!!!
@@ -139,19 +138,12 @@ public class Character {
 
 
     // Lav iteration 3 - metoder:
-    public void printCharacterSheet() { //switch case istedet
-        /*if (this.type == 'W') {
-            System.out.println("\nWarrior - Brave, strong and resilient!");
-        } else if (this.type == 'M') {
-            System.out.println("\nMage - Slick and smart with magical powers!");
-        } else if (this.type == 'R') {
-            System.out.println("\nRogue - Risk taking assassin with fast combat!");
-        }*/
+    public void printCharacterSheet() {
         String typeName = "";
         switch (type){
             case 'W':
                typeName = "Warrior";
-                System.out.println("\nWarrior - Brave, strong and resilient!");
+                System.out.println("Warrior - Brave, strong and resilient!");
                break;
             case 'R':
                 typeName = "Rogue";
@@ -162,11 +154,8 @@ public class Character {
                 System.out.println("\nMage - Slick and smart with magical powers!");
                 break;
         }
-
-        System.out.println("Character: "+name + " | "+ typeName +
-                "\n| HP: " + healthPoints+"/100"
-                + " | " + "XP: " + experiencePoints
-                + " | Level: " + level  + "\n| Gold: " + gold);
+        System.out.println("Character: "+name + " ("+ typeName + ") "+
+                "\n| Level: " + level + " | HP: "+ healthPoints+ " | Gold: " + gold);
     }
 
     public void heal(int amount) {
@@ -215,7 +204,6 @@ public class Character {
         }
 
     }
-
 
 
 
