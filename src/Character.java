@@ -121,8 +121,9 @@ public class Character {
     //iteration 4: attack method erstattet af min damage metode
     public void attack(Character target) {
         int damage = 5 * level + 10;
-        System.out.println(name + " attacks " + target.getName() + " for " + damage + " damage!" +
-                " |");
+       // int updateHP = healthPoints - damage;
+        System.out.println(name + " attacks " + target.getName() + " for " + damage + " damage!");
+                //+ " | HP updated: " + updateHP);
 
     }
 
@@ -142,8 +143,7 @@ public class Character {
             experiencePoints = 0;
             maxHealth += 10;
             healthPoints = maxHealth;
-            System.out.println(name + " levelled up from "
-                    + previousLevel + " --> " + level +
+            System.out.println(name + " levelled up from " + previousLevel + " --> " + level +
                     " | New max HP: " + maxHealth);
         }
     }

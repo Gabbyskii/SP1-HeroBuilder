@@ -37,7 +37,7 @@ import java.util.Arrays;
        System.out.println("\n===UPDATES===");
         warrior1.levelUp();
         warrior1.addXP(1000);
-       // warrior1.addGold(100);
+        warrior1.addGold(100);
 
         /*if (warrior1.removeGold(50)) {
             System.out.println("Bought a potion!");
