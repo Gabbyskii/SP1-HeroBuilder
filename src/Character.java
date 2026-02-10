@@ -8,7 +8,6 @@ public class Character {
     private double gold;
     private char type;
     private String[] inventory;
-    //private Weapon weapon;
 
 
     public Character(String name, char type, int healthPoints, int maxHealth, int level, int experiencePoints, double gold, String[] inventory) {
@@ -19,8 +18,6 @@ public class Character {
         this.level = level;
         this.experiencePoints = experiencePoints;
         this.gold = gold;
-        //this.weapon = weapon;
-        //this.isAlive = isAlive;
         this.inventory = inventory;
 
     }
@@ -135,7 +132,7 @@ public class Character {
     }
 
 
-    public void levelUp() { //fix!!!!
+    public void levelUp() {
         int threshold = 100 * level;
         if (experiencePoints >= threshold) {
             int previousLevel = level;

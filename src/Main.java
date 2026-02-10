@@ -1,8 +1,7 @@
 import java.util.Arrays;
 
     public static void main(String[] args) {
-        // Iteration 4 - objects (allerede oprettet):
-        // opretter første karakyer obj
+
         Character warrior1 = new Character("Ragnar", 'W',
                 85, 100, 5, 2300,
                 156.50, new String[]{"Ax", "Knife", "Shield", "Sprunk"});
@@ -10,6 +9,7 @@ import java.util.Arrays;
         Character rogue2 = new Character("Voldemort", 'R',
                 75, 100, 3, 2000,
                 150, new String[]{"Bow", "Dagger", "Shield", "Potion"});
+
 
         System.out.println("===CHARACTERS STATS===");
         warrior1.printCharacterSheet();
@@ -45,12 +45,10 @@ import java.util.Arrays;
             System.out.println("Not enough gold!");
         }*/
 
-        warrior1.printCharacterSheet(); //updated char sheet
 
-
-
-
-
+        // updated char sheets
+        warrior1.printCharacterSheet();
+        rogue2.printCharacterSheet();
 
 }
 
