@@ -118,9 +118,9 @@ public class Character {
     //iteration 4: attack method erstattet af min damage metode
     public void attack(Character target) {
         int damage = 5 * level + 10;
-       // int updateHP = healthPoints - damage;
-        System.out.println(name + " attacks " + target.getName() + " for " + damage + " damage!");
-                //+ " | HP updated: " + updateHP);
+      int updateHP = healthPoints - damage;
+        System.out.println(name + " attacks " + target.getName() + " for " + damage + " damage!"
+                + " | HP updated: " + updateHP);
 
     }
 

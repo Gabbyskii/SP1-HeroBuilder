@@ -7,7 +7,7 @@ import java.util.Arrays;
                 156.50, new String[]{"Ax", "Knife", "Shield", "Sprunk"});
 
         Character rogue2 = new Character("Voldemort", 'R',
-                75, 100, 3, 2000,
+                65, 100, 3, 2000,
                 150, new String[]{"Bow", "Dagger", "Shield", "Potion"});
 
 
