@@ -18,14 +18,14 @@ import java.util.Arrays;
         rogue2.printCharacterSheet();
         //rogue2.printInventory();
 
+        System.out.println("\n===HEALTH STATUS===");
+        warrior1.getHealthPercentage();
+        rogue2.getHealthPercentage();
+
         System.out.println("\n===COMBAT===");
         warrior1.attack(rogue2);
         rogue2.attack(warrior1);
 
-
-        System.out.println("\n===HEALTH STATUS===");
-        warrior1.getHealthPercentage();
-        rogue2.getHealthPercentage();
 
        /* if (warrior1.isHealthCritical()) {
             System.out.println("CRITICAL!!!");
